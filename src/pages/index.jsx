@@ -2,25 +2,33 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Container } from '@/components/Container'
 import { Hero } from '@/components/Hero'
+import { Introduction } from '@/components/Introduction'
+import { Categories } from '@/components/Categories'
+import { LatestFromTheBlog } from '@/components/FromTheBlog'
 import { BlogPreview } from '@/components/BlogPreview'
+import { Footer } from '@/components/Footer'
 
 import { getDatabase } from '../../lib/notion'
 
 export const databaseId = process.env.NOTION_DATABASE_ID
+export const homepageId = process.env.NOTION_HOMEPAGE
 
-export default function Home({ posts }) {
-  console.log(posts)
+export default function Home({ posts, homepage }) {
+  console.log(posts, homepage)
 
   return (
     <>
       <Head>
-        <title>StartUp Norway: Your Guide to Entrepreneurship</title>
+        <title>Discover the World with PNG Girls Travel Too</title>
         <meta
           name="description"
-          content="Navigating the cost and creation of your small business. "
+          content="Travel blog by PNG women sharing stunning photos, reviews, tips, and inspiration. Explore the world with us. "
         />
       </Head>
       <Hero />
+      <Introduction />
+      <Categories />
+      <LatestFromTheBlog />
 
       {/* From notion db */}
       <div>
@@ -31,14 +39,13 @@ export default function Home({ posts }) {
           <div className="relative mx-auto max-w-7xl">
             <div className="sm:text-center">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Step-by-step:
-                <br />
-                Starting a successful small business in Norway
+                Discover the World with PNG Girls Travel Too
               </h2>
               <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
-                StartUp Norway aims to give you an idea of costs, the steps
-                involved in making your website and other practical topics that
-                can help you start a small business in Norway.
+                PNG Girls Travel Too is your guide to budget-friendly travel,
+                unique experiences, and unforgettable memories. Join us on a
+                journey of discovery as we explore the world’s most picturesque
+                spots and sample the local cuisine.
               </p>
             </div>
             <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:max-w-none lg:grid-cols-3">
@@ -67,16 +74,19 @@ export default function Home({ posts }) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
 
 export const getStaticProps = async () => {
   const database = await getDatabase(databaseId)
+  const homeContent = await getDatabase(homepageId)
 
   return {
     props: {
       posts: database,
+      homepage: homeContent,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in

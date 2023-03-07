@@ -117,7 +117,7 @@ export function NavBar() {
                     <span className="absolute inset-0" />
                   </>
                 )}
-                <MenuIcon open={open} className="h-6 w-6 stroke-slate-700" />
+                <MenuIcon open={open} className="w-6 h-6 stroke-slate-700" />
               </Popover.Button>
             </div>
             <Popover.Panel className="absolute inset-x-0 top-0 bg-white/95 py-3.5 shadow-sm [@supports(backdrop-filter:blur(0))]:bg-white/80 [@supports(backdrop-filter:blur(0))]:backdrop-blur">
@@ -140,7 +140,7 @@ export function NavBar() {
                 </Popover.Button>
               ))}
             </Popover.Panel>
-            <div className="absolute inset-x-0 bottom-full z-10 h-4 bg-white" />
+            <div className="absolute inset-x-0 z-10 h-4 bg-white bottom-full" />
           </>
         )}
       </Popover>

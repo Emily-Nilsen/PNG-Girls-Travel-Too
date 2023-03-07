@@ -32,11 +32,16 @@ module.exports = {
         '5xl': '3rem',
         '6xl': '5rem',
       },
+      colors: {
+        primary: '#FFA07A',
+        secondary: '#FFFACD',
+        tertiary: '#A2B86C',
+      },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        display: ['Cabinet Grotesk', ...defaultTheme.fontFamily.sans],
+        sans: ['scandia-web', ...defaultTheme.fontFamily.sans],
+        display: ['adobe-handwriting-ernie', ...defaultTheme.fontFamily.serif],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 }

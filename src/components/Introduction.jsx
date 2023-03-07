@@ -5,60 +5,25 @@ import { Container } from '@/components/Container'
 
 export function Introduction() {
   return (
-    <section
-      id="introduction"
-      aria-label="Introduction"
-      className="pt-20 pb-16 sm:pb-20 md:pt-36 lg:py-32"
-    >
-      <Container className="text-lg tracking-tight text-slate-700">
-        <p className="text-4xl font-bold tracking-tight font-display text-slate-900">
-          The information on this blog is intended to give you an idea of how
-          much it will cost, how to make your website or blog and other
-          practical topics that may be useful in starting a small business in
-          Norway.
+    <div className="px-6 py-24 bg-white sm:py-32 lg:px-8">
+      <div className="max-w-2xl mx-auto text-center">
+        <p className="text-4xl leading-7 -rotate-6 font-display text-primary sm:text-5xl md:text-6xl">
+          Welcome
         </p>
-        <p className="mt-4">
-          Before I learned how to design icons myself, I always imagined that
-          they were drawn by hand using the pen tool, some sort of fancy
-          graphics tablet, and hours and hours spent manually fine-tuning bezier
-          curves.
+        <h2 className="mt-2 text-4xl font-medium tracking-tight text-gray-900 sm:text-5xl">
+          Discover the World with PNG Girls Travel Too
+        </h2>
+        <p className="mt-6 text-lg leading-8 text-gray-600">
+          Welcome to PNG Girls Travel Too, a travel blog by women from Papua New
+          Guinea sharing stunning photos, in-depth reviews, personal stories,
+          and practical tips for budget-friendly, meaningful travel. Join us on
+          a journey of discovery, from the bustling streets of Melbourne to the
+          serene beaches of Hawaii, as we inspire and empower Papua New Guinean
+          women to explore the world. Discover each stop’s local cuisine,
+          culture, and traditions and embark on your adventure. Let’s explore
+          the world together, one destination at a time.
         </p>
-        <p className="mt-4">
-          But it turns out this isn’t how great icon designers work at all.
-        </p>
-        <p className="mt-4">
-          In “Everything Starts as a Square”, you’ll learn the systems experts
-          use to create pixel perfect icons, without relying on a steady hand.
-        </p>
-        <ul role="list" className="mt-8 space-y-3">
-          {[
-            'Using boolean operations to combine basic shapes into complex icons',
-            'How to adapt icons to different sizes',
-            'Translating icons from an outline style to a solid style',
-            'Identifying the characteristics that make an icon set cohesive',
-            'Figma features and keyboard shortcuts to speed up your workflow',
-          ].map((feature) => (
-            <li key={feature} className="flex">
-              <CheckIcon className="flex-none w-8 h-8 fill-blue-500" />
-              <span className="ml-4">{feature}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-8">
-          By the end of the book, you’ll have all the confidence you need to dig
-          in and start creating beautiful icons that can hold their own against
-          any of the sets you can find online.
-        </p>
-        <p className="mt-10">
-          <Link
-            href="#free-chapters"
-            className="text-base font-medium text-blue-600 hover:text-blue-800"
-          >
-            Get two free chapters straight to your inbox{' '}
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </p>
-      </Container>
-    </section>
+      </div>
+    </div>
   )
 }
