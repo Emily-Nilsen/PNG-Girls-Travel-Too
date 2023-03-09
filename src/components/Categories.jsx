@@ -13,7 +13,8 @@ export function Categories() {
 
         <div className="grid grid-cols-1 mt-6 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
           <div className="overflow-hidden rounded-lg group aspect-w-2 aspect-h-1 sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
-            <img
+            <Image
+              fill
               src="https://res.cloudinary.com/dt3k2apqd/image/upload/q_auto/PNG%20Girls%20Travel%20Too/AdobeStock_284915930_xl0to3.jpg"
               alt="Melbourne, Australia"
               className="object-cover object-center transition group-hover:opacity-75"
@@ -25,7 +26,7 @@ export function Categories() {
             <div className="flex items-end p-6">
               <div>
                 <h3 className="font-semibold text-white">
-                  <a href="/destinations">
+                  <a href="#">
                     <span className="absolute inset-0" />
                     Stunning Destinations & Travel Stories
                   </a>
@@ -37,11 +38,11 @@ export function Categories() {
             </div>
           </div>
           <div className="overflow-hidden rounded-lg group aspect-w-2 aspect-h-1 sm:aspect-none sm:relative sm:h-full">
-            <img
+            <Image
+              fill
               src="https://res.cloudinary.com/dt3k2apqd/image/upload/q_auto/PNG%20Girls%20Travel%20Too/dish_w2u4ab.webp"
               alt="Delicious Discoveries"
               className="object-cover object-center transition group-hover:opacity-75 sm:absolute sm:inset-0 sm:h-full sm:w-full"
-              fill
             />
             <div
               aria-hidden="true"
@@ -62,7 +63,8 @@ export function Categories() {
             </div>
           </div>
           <div className="overflow-hidden rounded-lg group aspect-w-2 aspect-h-1 sm:aspect-none sm:relative sm:h-full">
-            <img
+            <Image
+              fill
               src="https://res.cloudinary.com/dt3k2apqd/image/upload/q_auto/PNG%20Girls%20Travel%20Too/tropical_flowers_rxg0au.webp"
               alt="Digital Store"
               className="object-cover object-center transition group-hover:opacity-75 sm:absolute sm:inset-0 sm:h-full sm:w-full"
@@ -87,7 +89,7 @@ export function Categories() {
           </div>
         </div>
 
-        <div className="mt-6 sm:hidden">
+        {/* <div className="mt-6 sm:hidden">
           <a
             href="#"
             className="block text-sm font-semibold text-primary hover:text-indigo-500"
@@ -95,7 +97,7 @@ export function Categories() {
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   )

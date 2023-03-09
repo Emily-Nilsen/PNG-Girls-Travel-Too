@@ -4,17 +4,16 @@ import { Container } from '@/components/Container'
 import { Hero } from '@/components/Hero'
 import { Introduction } from '@/components/Introduction'
 import { Categories } from '@/components/Categories'
-import { LatestFromTheBlog } from '@/components/FromTheBlog'
+import { FromTheBlog } from '@/components/FromTheBlog'
 import { BlogPreview } from '@/components/BlogPreview'
 import { Footer } from '@/components/Footer'
 
 import { getDatabase } from '../../lib/notion'
 
 export const databaseId = process.env.NOTION_DATABASE_ID
-export const homepageId = process.env.NOTION_HOMEPAGE
 
-export default function Home({ posts, homepage }) {
-  console.log(posts, homepage)
+export default function Home({ posts }) {
+  console.log(posts)
 
   return (
     <>
@@ -28,32 +27,29 @@ export default function Home({ posts, homepage }) {
       <Hero />
       <Introduction />
       <Categories />
-      <LatestFromTheBlog />
+      {/* <FromTheBlog /> */}
 
       {/* From notion db */}
-      <div>
-        <div className="relative px-6 pt-16 pb-20 bg-gray-50 lg:px-8 lg:pt-24 lg:pb-28">
-          <div className="absolute inset-0">
-            <div className="bg-white h-1/3 sm:h-2/3" />
-          </div>
-          <div className="relative mx-auto max-w-7xl">
-            <div className="sm:text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Discover the World with PNG Girls Travel Too
-              </h2>
-              <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
-                PNG Girls Travel Too is your guide to budget-friendly travel,
-                unique experiences, and unforgettable memories. Join us on a
-                journey of discovery as we explore the world’s most picturesque
-                spots and sample the local cuisine.
-              </p>
-            </div>
-            <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:max-w-none lg:grid-cols-3">
+      <div className="py-24 bg-white sm:py-32">
+        <div className="px-6 mx-auto max-w-7xl lg:px-8">
+          <div className="max-w-2xl mx-auto lg:max-w-4xl">
+            <p className="mb-6 text-4xl leading-7 -rotate-6 font-display text-primary sm:text-5xl md:text-6xl">
+              The Latest Stories
+            </p>
+            <h2 className="pt-6 text-4xl font-medium tracking-tight text-neutral-900 sm:text-5xl">
+              From PNG Girls Travel Too
+            </h2>
+            <p className="mt-2 text-lg leading-8 text-neutral-600">
+              Empowering Papua New Guinean Women to see the world beyond their
+              borders.
+            </p>
+            <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
               {posts.map((post) => (
                 <div key={post.id}>
                   <Link href={`/${post.id}`}>
-                    <BlogPreview
+                    <FromTheBlog
                       title={post.properties.Name.title[0].plain_text}
+                      date={post.properties.Date.date.start}
                       category={post.properties.Tags.multi_select[0].name}
                       categoryColour={
                         post.properties.Tags.multi_select[0].color
@@ -81,12 +77,10 @@ export default function Home({ posts, homepage }) {
 
 export const getStaticProps = async () => {
   const database = await getDatabase(databaseId)
-  const homeContent = await getDatabase(homepageId)
 
   return {
     props: {
       posts: database,
-      homepage: homeContent,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { databaseId } from './index'
 import Image from 'next/image'
 import { Container } from '@/components/Container'
+import { Button } from '@/components/Button'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -23,7 +24,9 @@ export const Text = ({ text }) => {
       <span
         className={[
           bold ? 'font-bold' : '',
-          code ? 'rounded-md bg-gray-100 px-2 py-1 font-mono text-red-600' : '',
+          code
+            ? '-rotate-6 rounded-md bg-gray-100 px-2 py-1 font-display text-primary'
+            : '',
           italic ? 'italic' : '',
           strikethrough ? 'line-through' : '',
           underline ? underline : '',
@@ -75,7 +78,7 @@ const renderBlock = (block) => {
       )
     case 'heading_2':
       return (
-        <h2 className="mb-4 text-3xl font-semibold">
+        <h2 className="mt-8 mb-4 text-3xl font-semibold">
           <Text text={value.rich_text} />
         </h2>
       )
@@ -136,8 +139,8 @@ const renderBlock = (block) => {
       const caption = value.caption ? value.caption[0]?.plain_text : ''
       return (
         <figure className="py-3">
-          <div className="relative overflow-hidden shadow-xl h-60 rounded-2xl">
-            <Image fill src={src} alt={caption} />
+          <div className="relative overflow-hidden shadow-xl h-80 rounded-2xl">
+            <Image className="object-cover" fill src={src} alt={caption} />
           </div>
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
@@ -145,7 +148,29 @@ const renderBlock = (block) => {
     case 'divider':
       return <hr key={id} />
     case 'quote':
-      return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>
+      return (
+        <figure key={id} className="my-10 border-l border-primary pl-9">
+          <blockquote className="font-medium text-gray-900">
+            <p>{value.rich_text[0].plain_text}</p>
+          </blockquote>
+          <figcaption className="flex mt-6 gap-x-4">
+            <Image
+              className="flex-none w-6 h-6 rounded-full bg-gray-50"
+              src="https://res.cloudinary.com/dt3k2apqd/image/upload/v1678190061/PNG%20Girls%20Travel%20Too/temp_logo_ceadpl.svg"
+              alt=""
+              height="150"
+              width="150"
+            />
+            <div className="text-sm leading-6">
+              <strong className="font-semibold text-gray-900">
+                Author of quote
+              </strong>{' '}
+              – Extra info
+            </div>
+          </figcaption>
+        </figure>
+      )
+
     case 'code':
       return (
         <pre className="px-4 py-2 mx-10 overflow-hidden bg-gray-800 rounded-2xl">
@@ -253,18 +278,18 @@ export default function Post({ page, blocks }) {
         </div>
       </div>
 
-      <article className="py-24">
+      <article className="py-16 sm:py-24">
         <Container>
-          <h1 className="text-5xl font-bold text-red-800 font-display">
+          <h1 className="mb-6 text-5xl font-bold font-display text-primary sm:mb-12">
             <Text text={page.properties.Name.title} />
           </h1>
           <section>
             {blocks.map((block) => (
               <Fragment key={block.id}>{renderBlock(block)}</Fragment>
             ))}
-            <Link href="/" className="text-green-600">
+            <Button href="/" className="my-8">
               ← Go home
-            </Link>
+            </Button>
           </section>
         </Container>
       </article>
